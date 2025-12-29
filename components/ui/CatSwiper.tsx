@@ -8,13 +8,12 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import { AllCategories } from "@/constants";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 
 
 
-function BestSwiper() {
+function CatSwiper() {
  
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -110,4 +109,4 @@ function BestSwiper() {
   );
 }
 
-export default BestSwiper;
+export default CatSwiper;
