@@ -12,7 +12,7 @@ type Product = {
   title: string,
   description: string,
   price: number,
-  image:  Image | null, 
+  image: string , 
   category: string,
 }
 export default function FullProduct({ product }: { product: Product }) {

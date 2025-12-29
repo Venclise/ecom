@@ -24,7 +24,7 @@ export default function Inputs() {
     category: "",
   });
 
-  const [preview,setPreview] = useState(null)
+  const [preview,setPreview] = useState<string | null>(null)
 
   const [loading, setIsLoading] = useState(false);
   
