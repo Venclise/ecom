@@ -2,6 +2,7 @@
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -27,25 +28,25 @@ export default function Cart() {
   return (
     <div>
       <Sheet >
-        <SheetTrigger className="bg-transparent hover:bg-gray-100 p-2 rounded-lg text-sm cursor-pointer ">
+        <SheetTrigger className="bg-transparent hover:bg-gray-100  rounded-lg text-sm cursor-pointer ">
           <ShoppingCart className="w-5 h-5" />
         </SheetTrigger>
-        <SheetContent className="z-[100] overflow-y-scroll p-2">
+        <SheetContent className="z-[100] overflow-y-scroll overflow-x-hidden ">
           <SheetHeader>
-            <SheetTitle className="font-banger text-center text-4xl tracking-wider ">
+            <SheetTitle className="text-4xl tracking-wider">
               Cart
             </SheetTitle>
 
             {
               cart.length < 1 &&
             <div className="h-screen w-full flex items-center justify-center">
-              <p className="font-normal text-sm text-neutral-700 ">Cart is empty..</p>
+              <p className="font-normal text-xs text-neutral-600 ">Cart is empty..</p>
               </div>
             }
               
               {cart.length&&cart?.map(({ title, img, id, price,qty }) => {
                 return (
-                <div className="mt-12 relative p-2" key={id}>
+                <div className="mt-12 relative " key={id}>
                   <Button
                   onClick={() => removeItem(id)}
                     variant="ghost"
@@ -83,15 +84,18 @@ export default function Cart() {
             })}
            
             </SheetHeader>
+            <SheetFooter className="w-full flex flex-col ">
+
 {cart?.length && (
   <>
-    <span className="text-right">Total:${total}</span>
+    <span className="text-right p-5 mb-5">Total:${total}</span>
 
-<Button>
+<Button className="absolute bottom-0 w-full">
       Checkout
 </Button>
   </>
 )}
+</SheetFooter>
         </SheetContent>
       </Sheet>
     </div>

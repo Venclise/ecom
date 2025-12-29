@@ -14,7 +14,7 @@ export default function Hero() {
              
         </h1>
 
-        <div className='h-[30rem] w-[30rem] relative '>
+        <div className='w-[20rem] h-[20rem] md:h-[30rem] md:w-[30rem] relative '>
             <Image src="/burg2.png" alt="Burger" fill className="w-full h-full object-contain" />
         </div>
         <Link href="/products">

@@ -11,17 +11,20 @@ import {
   SheetTrigger,
   SheetClose
 } from "@/components/ui/sheet"
-import { Menu } from 'lucide-react'
+import { TextAlignJustify } from 'lucide-react'
 import { links } from '@/constants'
 
+
 export default function Header() {
+  
   return (
     
-    <div className='p-5 flex items-center fixed top-0 left-0 w-full justify-between  z-[99]  backdrop-filter backdrop-blur-lg bg-opacity-100' >
+    <div className='p-3 flex items-center fixed top-0 left-0 w-full justify-between  z-[99]  backdrop-filter backdrop-blur-lg bg-opacity-100' >
       <div className='flex items-center justify-center gap-3  '>
      <Sheet >
   <SheetTrigger className='cursor-pointer'>
-      <Menu className='w-8 h-8'/>
+    <TextAlignJustify className='w-7'/>
+     
   </SheetTrigger>
   <SheetContent side='left' className='z-[100]'>
     <SheetHeader>
@@ -58,7 +61,7 @@ export default function Header() {
   </SheetContent>
 </Sheet>
         <Link href="/">
-        <span className='font-banger text-4xl text-green-700 tracking-wider'>
+        <span className='font-banger text-4xl text-green-600 tracking-wider'>
 
         Chewzy 
         </span>

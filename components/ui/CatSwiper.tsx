@@ -19,7 +19,7 @@ function CatSwiper() {
   const [activeIndex, setActiveIndex] = useState(0);
  const router = useRouter()
   return (
-    <div className="w-full flex flex-col gap-6 overflow-hidden p-10">
+    <div className="w-full flex flex-col gap-6 overflow-hidden p-2 md:p-5 lg:p-10">
 
 <h2 className="font-banger text-xl tracking-wider flex flex-col text-green-700">
 
@@ -47,21 +47,23 @@ function CatSwiper() {
           {AllCategories.map((item) => (
             <SwiperSlide
               key={item.id}
-              className={`flex flex-col gap-6 justify-center items-center p-5 h-[50vh] cursor-pointer ${item.bg} w-max rounded-sm`}
+              className={`flex flex-col justify-center items-center p-5 h-[50vh] cursor-pointer ${item.bg} w-max rounded-sm`}
               onClick={() => router.push(item.link)}
           
               >
           
-              <div className=" w-35 h-35 md:w-60 md:h-60 relative overflow-hidden">
+              <div className="w-40 h-40 md:w-60 md:h-60 relative overflow-hidden">
                 <Image
                   src={item.img}
                   alt={item.title}
                   fill
+                  sizes="auto"
+                  
                   className="object-contain"
                 />
               </div>
 
-              <h2 className="font-banger text-4xl tracking-wider  text-white">
+              <h2 className="font-banger text-center text-4xl tracking-wider  text-white">
                 {item.title}
               </h2>
 
@@ -79,7 +81,7 @@ function CatSwiper() {
         <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="
-            h-12 w-12 rounded-full
+            h-15 w-15 rounded-full
             border border-neutral-200
             bg-neutral-100
             flex items-center justify-center
@@ -87,13 +89,13 @@ function CatSwiper() {
             transition-all
           "
         >
-          <ChevronLeft size={20} className="text-neutral-800"/>
+          <ChevronLeft size={25} className="text-neutral-800"/>
         </button>
 
         <button
           onClick={() => swiperRef.current?.slideNext()}
           className="
-            h-12 w-12 rounded-full
+            h-15 w-15  rounded-full
             border border-neutral-200
             bg-neutral-100
             flex items-center justify-center
@@ -101,7 +103,7 @@ function CatSwiper() {
             transition-all
           "
         >
-          <ChevronRight size={20} className="text-neutral-800" />
+          <ChevronRight size={25} className="text-neutral-800" />
         </button>
       </div>
 
