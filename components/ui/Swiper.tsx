@@ -1,0 +1,113 @@
+"use client";
+
+import { A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
+import { useRef, useState } from "react";
+import type { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import { AllCategories } from "@/constants";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+
+
+
+function BestSwiper() {
+ 
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+ const router = useRouter()
+  return (
+    <div className="w-full flex flex-col gap-6 overflow-hidden p-10">
+
+<h2 className="font-banger text-xl tracking-wider flex flex-col text-green-700">
+
+      Explore 
+      <span  className="text-red-700 m-2 text-6xl">
+
+      Categories
+      </span>
+</h2>
+
+      
+      <div className="w-full">
+        <Swiper
+          modules={[A11y]}
+          spaceBetween={30}
+          breakpoints={{
+            0: { slidesPerView: 2 },
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          }}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+          
+        >
+          {AllCategories.map((item) => (
+            <SwiperSlide
+              key={item.id}
+              className={`flex flex-col gap-6 justify-center items-center p-5 h-[50vh] cursor-pointer bg-${item.bg}-700 w-max rounded-sm`}
+              onClick={() => router.push(item.link)}
+          
+              >
+          
+              <div className=" w-35 h-35 md:w-60 md:h-60 relative overflow-hidden">
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+
+              <h2 className="font-banger text-4xl tracking-wider  text-white">
+                {item.title}
+              </h2>
+
+            
+
+        
+              
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+     
+      <div className="flex items-end justify-end gap-4">
+        <button
+          onClick={() => swiperRef.current?.slidePrev()}
+          className="
+            h-12 w-12 rounded-full
+            border border-neutral-200
+            bg-neutral-100
+            flex items-center justify-center
+            hover:bg-neutral-200
+            transition-all
+          "
+        >
+          <ChevronLeft size={20} className="text-neutral-800"/>
+        </button>
+
+        <button
+          onClick={() => swiperRef.current?.slideNext()}
+          className="
+            h-12 w-12 rounded-full
+            border border-neutral-200
+            bg-neutral-100
+            flex items-center justify-center
+            hover:bg-neutral-200
+            transition-all
+          "
+        >
+          <ChevronRight size={20} className="text-neutral-800" />
+        </button>
+      </div>
+
+    </div>
+  );
+}
+
+export default BestSwiper;
