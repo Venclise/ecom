@@ -1,4 +1,4 @@
-import { title } from "process";
+
 
 export const AllCategories = [
     {
@@ -6,7 +6,7 @@ export const AllCategories = [
         img: "/burg2.png",
         title: "Burger",
             link: "/products?category=burger",
-            bg: "green"
+            bg: "bg-green-700"
         
 
     },
@@ -15,7 +15,7 @@ export const AllCategories = [
       img: "/pizza.png",
         title: "pizza",
             link: "/products?category=pizza",
-            bg: "red"
+            bg: "bg-red-700"
 
 
     },
@@ -24,7 +24,7 @@ export const AllCategories = [
         img: "/shawarma.png",
         title: "Shawarma",
             link: "/products?category=shawarma",
-            bg: "green"
+            bg: "bg-green-700"
 
 
     },
@@ -33,7 +33,7 @@ export const AllCategories = [
         img: "/wraps.png",
         title: "Wraps",
             link: "/products?category=wraps",
-            bg: "red"
+            bg: "bg-red-700"
 
     },
 
@@ -42,7 +42,7 @@ export const AllCategories = [
         img: "/fries.png",
         title: "Fries",
             link: "/products?category=fries",
-            bg: "green"
+            bg: "bg-green-700"
 
     },
 ]

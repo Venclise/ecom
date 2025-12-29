@@ -12,7 +12,7 @@ export default async function EditPage( { params }: {params: { id: string }}) {
 const {id} = await params
 
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/products/${id}`
  , {
      cache: "no-store"
    })

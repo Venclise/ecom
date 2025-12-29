@@ -17,7 +17,7 @@ export default async function Page({
 }) {
   const { id } = await params
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`,
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/products/${id}`,
     {
       cache: "no-store",
     }

@@ -47,7 +47,7 @@ function CatSwiper() {
           {AllCategories.map((item) => (
             <SwiperSlide
               key={item.id}
-              className={`flex flex-col gap-6 justify-center items-center p-5 h-[50vh] cursor-pointer bg-${item.bg}-700 w-max rounded-sm`}
+              className={`flex flex-col gap-6 justify-center items-center p-5 h-[50vh] cursor-pointer ${item.bg} w-max rounded-sm`}
               onClick={() => router.push(item.link)}
           
               >

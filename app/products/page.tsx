@@ -16,7 +16,7 @@ export default async function Page({
 
 
   const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+  process.env.NEXT_PUBLIC_SITE_URL 
 
 const res = await fetch(
   `${baseUrl}/api/products?${query.toString()}`,
