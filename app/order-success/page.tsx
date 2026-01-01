@@ -1,7 +1,9 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function OrderSuccess() {
   const searchParams = useSearchParams();
@@ -18,7 +20,7 @@ export default function OrderSuccess() {
         setLoading(true);
         const res = await fetch(`/api/orders/${orderId}`);
         const data = await res.json();
-        setOrder(data); // ✅ important: store data in state
+        setOrder(data); 
       } catch (err) {
         console.error(err);
       } finally {
@@ -27,11 +29,11 @@ export default function OrderSuccess() {
     };
 
     fetchOrder();
-    const interval = setInterval(fetchOrder,5000)
+    const interval = setInterval(fetchOrder,10000)
     return () => clearInterval(interval)
   }, [orderId]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p><Spinner />Loading...</p>;
   if (!order) return <p>Order not found.</p>;
 
   return (
@@ -53,6 +55,8 @@ Order Status:
 
 
       <div className="text-left mt-6 border-t pt-4">
+        <p><span className="font-semibold">Order id:</span> {order._id}</p>
+    
         <p><span className="font-semibold">Phone:</span> {order.customer.phone}</p>
         <p><span className="font-semibold">Address:</span> {order.customer.address}</p>
         <p className="font-semibold mt-2">Items:</p>
