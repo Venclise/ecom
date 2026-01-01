@@ -3,8 +3,8 @@ import { connectDB } from "../../lib/db";
 import { Order } from "../../models/order";
 
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+
+  {params}: {params: Promise<{ id: string }>}
 ) {
   try {
     await connectDB();
