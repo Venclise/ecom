@@ -1,13 +1,14 @@
-import { NextResponse } from "next/server";
-import { connectDB } from "@/lib/db";
-import { Order } from "@/models/order";
+import { NextRequest, NextResponse } from "next/server";
+import { connectDB } from "../../lib/db";
+import { Order } from "../../models/order";
 
 export async function GET(
-  req: Request,
-  context: { params: Promise<{ id: string }> } // <- params is a Promise
+   req: NextRequest,
+   { params }: { params: Promise<{ id: string }>  }
 ) {
   try {
-    const { id } = await context.params; // <- await the Promise
+       const { id } = await params;
+ 
 
     await connectDB();
 
