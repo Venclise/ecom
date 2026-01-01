@@ -5,13 +5,13 @@ import { Order } from "../../models/order";
 
 
 
-export async function GET(
+export async function  GET(
   req: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> } 
 ) {
   try {
     await connectDB();
-
+const { params } = context;
     const {id} = await params
 
     const order = await Order.findById(id)
