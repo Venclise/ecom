@@ -4,12 +4,12 @@ import { Order } from "../../models/order";
 
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } } // this route has id
+  { params }: { params: { id: string } }
 ) {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
     const order = await Order.findById(id);
 
     if (!order) {
