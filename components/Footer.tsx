@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <div className='w-full flex flex-col p-10 bg-gray-50 '>
 
-<div className='flex flex-col gap-3'>
+<div className='flex flex-col gap-3 w-max'>
 
         <Link href="/">
         <span className='font-banger text-4xl text-green-700'>

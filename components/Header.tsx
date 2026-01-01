@@ -45,8 +45,8 @@ export default function Header() {
            {
               links.map(({id,title,link}) => {
                 return (
-                       <SheetClose asChild>
-                   <Link href={link} key={id} className='w-full text-gray-700 hover:bg-green-100 px-2 py-1 rounded-sm hover:text-green-700 transition-all' >
+                       <SheetClose asChild key={id}>
+                   <Link href={link}  className='w-full text-black   hover:bg-green-100 px-2 py-1 rounded-sm hover:text-green-700 transition-all' >
                     <span className='text-2xl font-semibold  capitalize '>
                         {title}.
                     </span>

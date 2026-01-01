@@ -51,8 +51,11 @@ function CatSwiper() {
               onClick={() => router.push(item.link)}
           
               >
+<div className="flex items-center justify-center w-full h-full flex-col">
+
+
           
-              <div className="w-40 h-40 md:w-60 md:h-60 relative overflow-hidden">
+              <div className="w-25 h-25 md:w-40 md:h-40 relative overflow-hidden">
                 <Image
                   src={item.img}
                   alt={item.title}
@@ -68,7 +71,7 @@ function CatSwiper() {
               </h2>
 
             
-
+</div>
         
               
             </SwiperSlide>

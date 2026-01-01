@@ -3,7 +3,6 @@ import Products from '@/components/dashboard/Products'
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,

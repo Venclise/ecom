@@ -50,7 +50,7 @@ const router = useRouter()
     }
 
     try {
-      const res = await fetch("/api/products", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_UR}/api/products`, {
         method: "POST",
         body: formData,
       });

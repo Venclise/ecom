@@ -21,7 +21,7 @@ export default function Counter({
   );
 
   const addToCart = useCartStore((state) => state.addToCart);
-  const updateQty = useCartStore((state) => state.updateQty);
+  const updateQty = useCartStore((state) => state.updateQty)
 
   const qty = item?.qty ?? 0;
 
@@ -29,7 +29,7 @@ export default function Counter({
     if (item) {
       updateQty(id, item.qty + 1);
     } else {
-      // ✅ NO qty here
+    
       addToCart({
         id,
         title,
@@ -45,21 +45,24 @@ export default function Counter({
   };
 
   return (
-    <div className="flex items-center border border-gray-200 rounded-md">
+    <div className="flex items-center h-max w-max border border-gray-200 rounded-sm overflow-hidden">
       <Button
         variant="outline"
-        className="rounded-none border-gray-100 text-xl"
+        size="sm"
+        className="rounded-none  text-sm"
         onClick={increment}
       >
         +
       </Button>
 
-      <span className="font-mono w-[2.5rem] text-center">
+      <span className="font-mono w-[1.5rem] text-center text-sm">
         {qty}
       </span>
 
       <Button
         variant="outline"
+        size="sm"
+
         className="rounded-none border-gray-100 text-xl"
         onClick={decrement}
         disabled={qty <= 1}

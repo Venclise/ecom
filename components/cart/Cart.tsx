@@ -1,17 +1,20 @@
 "use client";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ShoppingCart, Trash } from "lucide-react";
+import { Minus, ShoppingCart, Trash } from "lucide-react";
 import Image from "next/image";
 import Counter from "./Counter";
 import { Button } from "../ui/button";
 import { useCartStore } from "./CartHook";
+import { useEffect } from "react";
+import Link from "next/link";
 
 
 
@@ -22,13 +25,15 @@ export default function Cart() {
   const removeItem = useCartStore((state) => state.removeFromCart)
 
    const total = cart.reduce(
-    (sum, item) => sum + item.price * item.qty,
-    0
-  )
+    (sum, item) => sum + item.price * item.qty,   0)
+
+  
+
+   
   return (
     <div>
       <Sheet >
-        <SheetTrigger className="bg-transparent hover:bg-gray-100  rounded-lg text-sm cursor-pointer ">
+        <SheetTrigger className="bg-transparent hover:bg-gray-100 h-10 w-10 flex items-center justify-center rounded-lg text-sm cursor-pointer  ">
           <ShoppingCart className="w-5 h-5" />
         </SheetTrigger>
         <SheetContent className="z-[100] overflow-y-scroll overflow-x-hidden ">
@@ -37,7 +42,7 @@ export default function Cart() {
               Cart
             </SheetTitle>
 
-            {
+            { 
               cart.length < 1 &&
             <div className="h-screen w-full flex items-center justify-center">
               <p className="font-normal text-xs text-neutral-600 ">Cart is empty..</p>
@@ -47,26 +52,30 @@ export default function Cart() {
               {cart.length&&cart?.map(({ title, img, id, price,qty }) => {
                 return (
                 <div className="mt-12 relative " key={id}>
-                  <Button
-                  onClick={() => removeItem(id)}
-                    variant="ghost"
-                    size="icon-sm"
-                    className="absolute cursor-pointer  right-0 top-0 h-1 w-1 p-1 text-red-500 hover:text-red-500"
-                  >
-                    <Trash />
-                  </Button>
+              <Button
+                           onClick={() => removeItem(id)}
+                           variant="secondary"
+                            
+                           className=" w-5 h-5 text-red-500 hover:bg-red-100 bg-red-100 cursor-pointer hover:text-red-600 absolute top-0 right-0 rounded-full "
+                         >
+                           <Minus className="w-1 h-1" />
+                         </Button> 
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center gap-2">
-                      <div className="p-3 bg-gray-100 rounded-xl">
-                        <Image src={img} alt={title} height="60" width="60" />
+                      <div className="p-3 bg-gray-100 rounded-md">
+                        <Image src={img} alt={title} height="50" width="50" />
                       </div>
-                      <p className="font-banger tracking-wider text-ellipsis ">{title}</p>
-                    </div>
-                    <div className="flex items-end justify-end p-1 gap-1 flex-col">
-                    
-                      <span className="font-semibold text-sm mr-3 ">
+                      <div>
+
+            <h2 className="font-semibold">{title}</h2>
+                      <span className="font-bold text-sm text-neutral-800  ">
                         ${price * qty}
                       </span>
+                      </div>
+                      
+                    </div>
+                    <div className="flex mt-8">
+                    
                  
   <Counter
     key={id}
@@ -88,11 +97,20 @@ export default function Cart() {
 
 {cart?.length && (
   <>
-    <span className="text-right p-5 mb-5">Total:${total}</span>
+    <span className=" p-5 mb-5 w-full flex items-center justify-between font-semibold">Total:
+      <span className="font-bold text-xl">
 
-<Button className="absolute bottom-0 w-full">
+      ${total} 
+      </span>
+      </span>
+
+<Link href="/checkout">
+<SheetClose className="w-full">
+<Button className=" w-full">
       Checkout
 </Button>
+</SheetClose>
+</Link>
   </>
 )}
 </SheetFooter>
