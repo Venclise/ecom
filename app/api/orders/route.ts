@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "../lib/db";
 import { Order } from "../models/order";
 
@@ -59,8 +59,8 @@ export async function POST(req: Request) {
 
 
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+   req: NextRequest,
+    { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
@@ -115,6 +115,5 @@ export async function PATCH(req: Request) {
     );
   }
 }
-
 
 
