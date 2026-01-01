@@ -2,14 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "../lib/db";
 import { Order } from "../models/order";
 
+// POST new order
 export async function POST(req: Request) {
   try {
     await connectDB();
 
     const body = await req.json();
     const { customer, items } = body;
-
-
 
     if (!customer || !items || !items.length) {
       return NextResponse.json(
@@ -18,7 +17,6 @@ export async function POST(req: Request) {
       );
     }
 
-    
     const mappedItems = items.map((item: any) => ({
       title: item.title,
       price: item.price,
@@ -31,11 +29,10 @@ export async function POST(req: Request) {
       0
     );
 
-   
     const order = await Order.create({
       customer: {
         name: customer.name,
-        phone: customer.phone, 
+        phone: customer.phone,
         address: customer.address,
         lastName: customer.lastName,
         otherInfo: customer.otherInfo,
@@ -57,11 +54,8 @@ export async function POST(req: Request) {
   }
 }
 
-
-export async function GET(
-   req: NextRequest,
-    { params }: { params: Promise<{ id: string }> }
-) {
+// GET all orders
+export async function GET(req: Request) {
   try {
     await connectDB();
 
@@ -80,6 +74,7 @@ export async function GET(
   }
 }
 
+// PATCH update order
 export async function PATCH(req: Request) {
   try {
     await connectDB();
@@ -115,5 +110,3 @@ export async function PATCH(req: Request) {
     );
   }
 }
-
-

@@ -1,17 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectDB } from "../../lib/db";
 import { Order } from "../../models/order";
 
 export async function GET(
-   req: NextRequest,
-   { params }: { params: Promise<{ id: string }>  }
+  req: Request,
+  { params }: { params: { id: string } } // this route has id
 ) {
   try {
-       const { id } = await params;
- 
-
     await connectDB();
 
+    const { id } = params;
     const order = await Order.findById(id);
 
     if (!order) {
