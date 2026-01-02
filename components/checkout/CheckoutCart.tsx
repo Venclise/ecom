@@ -19,6 +19,8 @@ export default function CheckoutCart() {
   const removeItem = useCartStore((s) => s.removeFromCart);
 
   const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+
 
   const [info, setInfo] = useState({
     name: "",
@@ -28,7 +30,13 @@ export default function CheckoutCart() {
     otherInfo: "",
   });
 
-  if (!cart.length) return <p className="text-center">Cart empty</p>;
+  if (!cart.length) return (
+    <div className="w-full h-screen flex items-center justify-center">
+
+  <p className="text-center text-sm">Cart is empty</p>
+    </div>
+  )
+  ;
 
   const customerData = {
     name: info.name + " " + info.lastName,
@@ -39,24 +47,7 @@ export default function CheckoutCart() {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    setLoading(true);
-    e.preventDefault();
-    
-    if (!info.name || !info.number || !info.address) {
-      toast.error("Please fill in the required feilds ");
-    } else {
-      toast.success("Successfully submitted the info.");
-    }
-
-    const isPK = (number?: string) => number?.startsWith("+92");
-
-    if (!isPK(info.number)) {
-      toast.error("The number must start with +92");
-    }
-
-    setLoading(false);
-  };
+ 
 
   const handleChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -67,7 +58,7 @@ export default function CheckoutCart() {
 
   const handleClick = async () => {
     setLoading(true)
-    console.log(cart,customerData)
+   
     const res = await fetch("/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -86,7 +77,7 @@ router.push(`/order-success?orderId=${data.order._id}`);
   
 } else {
   toast.error("Failed to place order: " + data.message);
-  setLoading(false  )
+  setLoading(false)
 }
 
   };
@@ -157,7 +148,7 @@ router.push(`/order-success?orderId=${data.order._id}`);
           </div>
         </div>
         <div className="w-full mt-6">
-          <Button className="w-full" onClick={handleClick} disabled={loading}>
+          <Button className="w-full" onClick={handleClick} disabled={!info.address || !info.name || !info.number}>
             {loading ? <span className="flex items-center gap-2"><Spinner />Loading</span> : "Place order"}
             
           </Button>
@@ -167,7 +158,7 @@ router.push(`/order-success?orderId=${data.order._id}`);
       <div className=" h-max lg:h-max bg-white w-full lg:w-1/1 border border-gray-200 rounded-2xl p-5 md:p-10 lg:p-10  shadow-xl shadow-gray-200">
         <form
           className="border p-5 rounded-2xl w-full lg:w-1/1 "
-          onSubmit={handleSubmit}
+          onSubmit={handleClick}
         >
           <h1 className="font-bold  text-xl">Personal Information</h1>
 
@@ -245,7 +236,7 @@ router.push(`/order-success?orderId=${data.order._id}`);
             </div>
           </div>
           <div className=" w-full flex items-end justify-end">
-            <Button className="mt-8 w-full lg:w-1/2  rounded-2xl  "  disabled={loading}>
+            {/* <Button className="mt-8 w-full lg:w-1/2  rounded-2xl  "  disabled={loading}>
               {loading ? (
                 <div className="flex items-center gap-3">
                   <Spinner /> Loading
@@ -255,7 +246,7 @@ router.push(`/order-success?orderId=${data.order._id}`);
 
 
               )}
-            </Button>
+            </Button> */}
           </div>
         </form>
       </div>

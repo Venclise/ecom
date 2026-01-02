@@ -28,9 +28,9 @@ export default function CategoryFilter() {
 
   return (
     <Select value={activeCategory} onValueChange={handleChange}>
-      <SelectTrigger className="w-max px-5 " >
-        <Filter />
-        <SelectValue placeholder="ALL" />
+      <SelectTrigger className="w-max px-1 lg:px-5 " >
+        <Filter className="w-3 h-3"/>
+        <SelectValue placeholder="ALL"  />
       </SelectTrigger>
 
       <SelectContent>

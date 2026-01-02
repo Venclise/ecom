@@ -23,7 +23,7 @@ export default function Counter({
   const addToCart = useCartStore((state) => state.addToCart);
   const updateQty = useCartStore((state) => state.updateQty)
 
-  const qty = item?.qty ?? 0;
+  const qty = item?.qty ?? 1;
 
   const increment = () => {
     if (item) {

@@ -6,6 +6,7 @@ import { useCartStore } from "@/components/cart/CartHook";
 import { toast } from 'sonner';
 import Counter from '../cart/Counter';
 import { Badge } from "@/components/ui/badge"
+import { useRouter } from 'next/navigation';
 
 type Product = {
   _id: any,
@@ -17,7 +18,7 @@ type Product = {
 }
 export default function FullProduct({ product }: { product: Product }) {
       const addToCart = useCartStore(state => state.addToCart)
-    
+    const router = useRouter()
     return (
   <div className="w-full mt-12 h-max lg:h-screen  flex items-center justify-around  flex-col lg:flex-row ">
         
@@ -58,8 +59,19 @@ export default function FullProduct({ product }: { product: Product }) {
   img={product.image}
 />  
 
-        <div className="flex lg:flex-col gap-6 mt-6 w-[70%] flex-row">
-          <Button className="bg-green-700 hover:bg-green-600 px-9 py-5  rounded-sm font-banger tracking-wider">
+        <div className="flex  flex-col gap-6 mt-6 w-[70%] ">
+          <Button className="bg-green-700 hover:bg-green-600 px-9 py-5   rounded-sm font-banger tracking-wider"
+              onClick={() => {addToCart({
+                               id: product._id,
+                               title: product.title,
+                               price: product.price,
+                               img: product.image
+                        }), 
+                        router.push("/checkout")
+                        toast.success("Successfully added to cart") }
+                      }
+          
+          >
             Buy now
           </Button>
 
