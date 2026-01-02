@@ -11,7 +11,7 @@ type Item = {
 }
 export default async function Products() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}api/products`,
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/products`,
     { cache: "no-store" }
   )
   if (!res.ok) {
