@@ -33,8 +33,13 @@ export default function Cart() {
   return (
     <div>
       <Sheet >
-        <SheetTrigger className="bg-transparent hover:bg-gray-100 h-10 w-10 flex items-center justify-center rounded-lg text-sm cursor-pointer  ">
-          <ShoppingCart className="w-5 h-5" />
+        <SheetTrigger className="relative bg-transparent hover:bg-gray-100 h-10 w-10 flex items-center justify-center rounded-lg text-sm cursor-pointer  ">
+          {
+                  <div className="absolute top-0 right-0 text-white bg-black w-5 h-5 font-mono rounded-full  ">
+                     {cart.length } 
+                 </div>
+          }
+          <ShoppingCart className="w-7 h-7" />
         </SheetTrigger>
         <SheetContent className="z-[100] overflow-y-scroll overflow-x-hidden ">
           <SheetHeader>

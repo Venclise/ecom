@@ -19,7 +19,7 @@ export default function Header() {
   
   return (
     
-    <div className='p-3 flex items-center fixed top-0 left-0 w-full justify-between  z-[99]  backdrop-filter backdrop-blur-lg bg-opacity-100' >
+    <div className='p-3 flex items-center fixed top-0 left-0 w-full justify-between  z-[99]  backdrop-filter backdrop-blur-xl bg-opacity-100' >
       <div className='flex items-center justify-center gap-3  '>
      <Sheet >
   <SheetTrigger className='cursor-pointer'>
@@ -32,7 +32,7 @@ export default function Header() {
         <SheetClose asChild>
 
            <Link href="/">
-        <span className='font-banger tracking-wider text-4xl text-green-700'>
+        <span className='text-4xl text-green-700'>
 
    Chewzy
         </span>
@@ -61,7 +61,7 @@ export default function Header() {
   </SheetContent>
 </Sheet>
         <Link href="/">
-        <span className='font-banger text-4xl text-green-600 tracking-wider'>
+        <span className=' text-2xl text-green-600 font-bold '>
 
         Chewzy 
         </span>

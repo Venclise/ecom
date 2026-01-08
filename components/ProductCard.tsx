@@ -23,9 +23,10 @@ export default function ProductCard({ item }: { item: Item }) {
             className="object-contain w-full h-full " 
           />
         </div>
-        <div className="w-full flex items-center flex-col justify-center bg-white ">
-          <h1 className="font-banger text-2xl tracking-wider">{item.title}</h1>
-          <h2 className="font-semibold">${item.price}</h2>
+        <div className="w-full flex items-center flex-col gap-2  justify-center bg-white ">
+        
+          <h1 className=" text-2xl font-semibold line-clamp-1">{item.title}</h1>
+          <h2 className="font-bold">${item.price}</h2>
         </div>
       </div>
     </Link>

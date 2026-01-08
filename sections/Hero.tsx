@@ -1,28 +1,62 @@
-
-import { Button } from '@/components/ui/button'
-import { ChevronRight } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Hero() {
   return (
-    <div className='h-max w-full p-10 flex items-center justify-center  flex-col text-center mt-12' >
-        <h1 className='font-banger text-7xl tracking-widest  '>
-              <span className='font-semibold text-green-700'>Let's</span> <br />
-              <span className='font-semibold text-red-700 text-[14rem]'>Eat</span> <br/>
-             
-        </h1>
+    <div className='h-max w-full p-10   mt-16   flex items-center justify-center flex-col md:flex-row gap-8'>
+         <Link href="/products" className="transition-all text-white   underline  flex flex-col   h-screen w-full md:w-[25rem] ">
+      <div className="bg-[#fe3a3a] h-full w-full p-2  ">
 
-        <div className='w-[20rem] h-[20rem] md:h-[30rem] md:w-[30rem] relative '>
-            <Image src="/burg2.png" alt="Burger" fill className="w-full h-full object-contain" />
-        </div>
-        <Link href="/products">
+          <div className="w-full h-[90%] relative">
+               <Image src="/deals.png" alt="Burger" fill/>
+         </div> 
+         <div className="w-full flex items-end justify-end h-max">
 
-        <Button className='cursor-pointer rounded-full hover:gap-5  hover:bg-green-700 bg-green-700 text-white font-banger tracking-widest  w-max h-[2.5rem]'>
-             View Menu  <ChevronRight />
-        </Button>
-        </Link>
+         <span className="text-white font-semibold flex items-center mt-4">
+            View Deals 
+             <ChevronRight className="w-5 h-5 text-white"/>
+         </span>
+         </div>
+      </div>
+         </Link>
+
+         <Link href="/products/695f4199917d69ed4140f96e" className="transition-all  underline    flex flex-col   h-screen w-full md:w-[25rem] ">
+
+       <div className="bg-[#fefdfd] h-full w-full p-2">
+
+          <div className="w-full h-[90%] relative">
+               <Image src="/buy2pizza.png" alt="Burger" fill/>
+         </div> 
+        
+      <div className="w-full flex items-end justify-end h-max">
+
+         <span className=" font-semibold flex items-center mt-4">
+            View Deal
+             <ChevronRight className="w-5 h-5 "/>
+         </span>
+         </div>
+        
+      </div>
+      </Link>
+         <Link href="/products" className="transition-all   underline text-white   flex flex-col   h-screen w-full md:w-[25rem] ">
+
+       <div className="bg-[#F9D02C] h-screen w-full md:w-[25rem] p-2">
+
+          <div className="w-full h-[90%] relative">
+               <Image src="/exp.png" alt="Burger" fill/>
+         </div> 
+     
+         <div className="w-full flex items-end justify-end h-max">
+
+         <span className=" font-semibold flex items-center mt-4 text-white">
+            View Deals 
+             <ChevronRight className="w-5 h-5 "/>
+         </span>
+         </div>
+      </div>
+         </Link>
     </div>
   )
 }

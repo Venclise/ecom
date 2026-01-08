@@ -19,26 +19,23 @@ function CatSwiper() {
   const [activeIndex, setActiveIndex] = useState(0);
  const router = useRouter()
   return (
-    <div className="w-full flex flex-col gap-6 overflow-hidden p-2 md:p-5 lg:p-10">
-
-<h2 className="font-banger text-xl tracking-wider flex flex-col text-green-700">
-
-      Explore 
-      <span  className="text-red-700 m-2 text-6xl">
-
+    <div className="w-full flex flex-col gap-4 overflow-hidden p-5 lg:px-20 mt-12 ">
+      
+      <span  className="text-black  text-4xl md:text-6xl font-semibold flex flex-col gap-2">
+        <span className="text-2xl">Explore</span>
       Categories
       </span>
-</h2>
+
 
       
-      <div className="w-full">
+      <div className="w-full mx-auto">
         <Swiper
           modules={[A11y]}
           spaceBetween={30}
           breakpoints={{
-            0: { slidesPerView: 2 },
-            640: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
+            0: { slidesPerView: 3 },
+            640: { slidesPerView: 4 },
+            1024: { slidesPerView: 6 },
           }}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
@@ -47,26 +44,24 @@ function CatSwiper() {
           {AllCategories.map((item) => (
             <SwiperSlide
               key={item.id}
-              className={`flex flex-col justify-center items-center p-5 h-[50vh] cursor-pointer ${item.bg} w-max rounded-sm`}
+              className={`flex flex-col justify-center items-center  h-[50vh] cursor-pointer  w-full rounded-sm mx-auto `}
               onClick={() => router.push(item.link)}
           
               >
-<div className="flex items-center justify-center w-full h-full flex-col">
+<div className="flex items-center justify-center w-full h-full flex-col hover:bg-gray-50 p-3 rounded-md ">
 
 
           
-              <div className="w-25 h-25 md:w-40 md:h-40 relative overflow-hidden">
+              <div className="w-25 h-25  relative overflow-hidden">
                 <Image
                   src={item.img}
                   alt={item.title}
                   fill
-                  sizes="auto"
-                  
                   className="object-contain"
                 />
               </div>
 
-              <h2 className="font-banger text-center text-4xl tracking-wider  text-white">
+              <h2 className=" text-center text-sm capitalize text-black font-semibold">
                 {item.title}
               </h2>
 
@@ -84,29 +79,31 @@ function CatSwiper() {
         <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="
-            h-15 w-15 rounded-full
+            h-10 w-10 rounded-full
             border border-neutral-200
             bg-neutral-100
             flex items-center justify-center
             hover:bg-neutral-200
             transition-all
+            lg:hidden
           "
         >
-          <ChevronLeft size={25} className="text-neutral-800"/>
+          <ChevronLeft size={20} className="text-neutral-800"/>
         </button>
 
         <button
           onClick={() => swiperRef.current?.slideNext()}
           className="
-            h-15 w-15  rounded-full
+            h-10 w-10  rounded-full
             border border-neutral-200
             bg-neutral-100
             flex items-center justify-center
             hover:bg-neutral-200
             transition-all
+            lg:hidden
           "
         >
-          <ChevronRight size={25} className="text-neutral-800" />
+          <ChevronRight size={20} className="text-neutral-800" />
         </button>
       </div>
 

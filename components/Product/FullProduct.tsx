@@ -39,12 +39,12 @@ export default function FullProduct({ product }: { product: Product }) {
     <div className='relative'>
 
 <Badge variant="default" className='capitalize bg-green-700'>{product.category}</Badge>
-        <h2 className="text-6xl font-banger tracking-widest">
+        <h2 className="text-6xl ">
           {product.title}
         </h2>
     </div>
 
-        <p className="font-banger text-2xl">
+        <p className="font-mono text-2xl">
           ${product.price}
         </p>
 
@@ -60,24 +60,12 @@ export default function FullProduct({ product }: { product: Product }) {
 />  
 
         <div className="flex  flex-col gap-6 mt-6 w-[70%] ">
-          <Button className="bg-green-700 hover:bg-green-600 px-9 py-5   rounded-sm font-banger tracking-wider"
-              onClick={() => {addToCart({
-                               id: product._id,
-                               title: product.title,
-                               price: product.price,
-                               img: product.image
-                        }), 
-                        router.push("/checkout")
-                        toast.success("Successfully added to cart") }
-                      }
-          
-          >
-            Buy now
-          </Button>
+        
+     
 
           <Button
-            variant="secondary"
-            className="px-9 py-5  font-banger rounded-sm tracking-wider"
+            variant="default" 
+            className="px-9 py-5  text-white hover:bg-green-700 rounded-sm  bg-green-700"
                 onClick={() => {addToCart({
                                id: product._id,
                                title: product.title,

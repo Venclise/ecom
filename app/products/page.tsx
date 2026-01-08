@@ -24,8 +24,8 @@ const res = await fetch(
 
   if (!res.ok) {
     return (
-      <div className="w-full h-screen flex items-center justfiy-center ">
-           <p>An error occured.Please check your internet connect.</p>
+      <div className="w-full h-screen flex items-center text-sm justify-center ">
+           <p>An error occured. Please check your internet connection.  </p>
       </div>
     )
   }
@@ -38,6 +38,7 @@ const res = await fetch(
       <SearchInput />
       <CategoryFilter />
       </div>
+      
     <div className=" px-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-2  gap-1.5 lg:gap-3 mt-12 ">
       {data.map((item: any) => (
         <ProductCard key={item._id} item={item} />
