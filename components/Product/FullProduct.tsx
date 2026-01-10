@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import Counter from '../cart/Counter';
 import { Badge } from "@/components/ui/badge"
 import { useRouter } from 'next/navigation';
+import { clear } from 'console';
 
 type Product = {
   _id: any,
@@ -18,7 +19,23 @@ type Product = {
 }
 export default function FullProduct({ product }: { product: Product }) {
       const addToCart = useCartStore(state => state.addToCart)
+    const clearCart = useCartStore((s) => s.clearCart);
     const router = useRouter()
+
+    const handleBuyNow = () => {
+      clearCart(  )
+         addToCart({
+                               id: product._id,
+                               title: product.title,
+                               price: product.price,
+                               img: product.image
+                        })
+
+    
+
+   
+    router.push("/checkout");
+    }
     return (
   <div className="w-full mt-12 h-max lg:h-screen  flex items-center justify-around  flex-col lg:flex-row ">
         
@@ -39,7 +56,7 @@ export default function FullProduct({ product }: { product: Product }) {
     <div className='relative'>
 
 <Badge variant="default" className='capitalize bg-green-700'>{product.category}</Badge>
-        <h2 className="text-6xl ">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl ">
           {product.title}
         </h2>
     </div>
@@ -62,6 +79,13 @@ export default function FullProduct({ product }: { product: Product }) {
         <div className="flex  flex-col gap-6 mt-6 w-[70%] ">
         
      
+          <Button
+            variant="secondary" 
+            className="px-9 py-5  "
+                onClick={handleBuyNow}
+          >
+          Buy now
+          </Button>
 
           <Button
             variant="default" 

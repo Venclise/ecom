@@ -1,5 +1,8 @@
+"use client"
 import Image from "next/image"
 import ProductActions from "./ProductAction"
+import { useState } from "react"
+import { Button } from "../ui/button"
 
 type Item = {
   _id: string
@@ -9,22 +12,16 @@ type Item = {
   image: string
   category: string
 }
-export default async function Products() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/products`,
-    { cache: "no-store" }
-  )
-  if (!res.ok) {
-    console.log("Something went wrong")
-    return null
-  }
-  const data: Item[] = await res.json()
+export default  function Products({data}:{data:Item[]}) {
+  const [visibleCount,setVisibleCount] = useState(7)
+
 
   
   return (
-    <div className="flex items-center justify-center flex-wrap md:gap-2 md:p-2 gap-5 ">
+    <div className="w-full h-max flex items-center  flex-col justify-center ">
+    <div className="flex justify-center flex-wrap md:gap-2 md:p-2 gap-5 ">
     
-       {data.map((product) => (
+       {data.slice(0,visibleCount).map((product) => (
         <div
           key={product._id}
           className="w-[20rem] lg:w-[15rem] h-[25rem] bg-gray-50 p-2 relative rounded flex items-center justify-center flex-col"
@@ -54,5 +51,10 @@ export default async function Products() {
         </div>
       ))} 
     </div>
+    {visibleCount < data.length && (
+      <Button className="mt-6 text-blue-500 cursor-pointer  underline hover:text-blue-500 " variant="ghost"  onClick={() => setVisibleCount((prev) => prev + 7)}>Load 7+ more</Button>
+    )}
+    </div>
+
   )
 }

@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className='h-max w-full p-10   mt-16   flex items-center justify-center flex-col md:flex-row gap-8'>
+    <div className='h-max w-full p-20 lg:p-10   mt-8 lg:mt-16    flex items-center justify-center flex-col md:flex-row lg:gap-8'>
          <Link href="/products" className="transition-all text-white   underline  flex flex-col   h-screen w-full md:w-[25rem] ">
-      <div className="bg-[#fe3a3a] h-full w-full p-2  ">
+      <div className="bg-[#fe3a3a] h-[80vh] lg:h-full w-full p-2  ">
 
           <div className="w-full h-[90%] relative">
                <Image src="/deals.png" alt="Burger" fill/>
@@ -24,7 +24,7 @@ export default function Hero() {
 
          <Link href="/products/695f4199917d69ed4140f96e" className="transition-all  underline    flex flex-col   h-screen w-full md:w-[25rem] ">
 
-       <div className="bg-[#fefdfd] h-full w-full p-2">
+       <div className="bg-[#fefdfd]  h-[70vh] lg:h-full w-full p-2">
 
           <div className="w-full h-[90%] relative">
                <Image src="/buy2pizza.png" alt="Burger" fill/>
@@ -42,7 +42,7 @@ export default function Hero() {
       </Link>
          <Link href="/products" className="transition-all   underline text-white   flex flex-col   h-screen w-full md:w-[25rem] ">
 
-       <div className="bg-[#F9D02C] h-screen w-full md:w-[25rem] p-2">
+       <div className="bg-[#F9D02C]  h-[80vh] lg:h-full w-full md:w-[25rem] p-2">
 
           <div className="w-full h-[90%] relative">
                <Image src="/exp.png" alt="Burger" fill/>

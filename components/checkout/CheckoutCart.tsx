@@ -19,7 +19,6 @@ export default function CheckoutCart() {
   const removeItem = useCartStore((s) => s.removeFromCart);
 
   const [loading, setLoading] = useState(false);
-  const [disabled, setDisabled] = useState(false);
 
 
   const [info, setInfo] = useState({
@@ -71,8 +70,8 @@ export default function CheckoutCart() {
     const data = await res.json();
 if (res.ok) {
   toast.success("Your order has been placed!");
-  localStorage.removeItem("cart");
-router.push(`/order-success?orderId=${data.order._id}`);
+  router.push(`/order-success?orderId=${data.order._id}`);
+  localStorage.removeItem("cart");  
   setLoading(false)
   
 } else {
@@ -236,17 +235,7 @@ router.push(`/order-success?orderId=${data.order._id}`);
             </div>
           </div>
           <div className=" w-full flex items-end justify-end">
-            {/* <Button className="mt-8 w-full lg:w-1/2  rounded-2xl  "  disabled={loading}>
-              {loading ? (
-                <div className="flex items-center gap-3">
-                  <Spinner /> Loading
-                </div>
-              ) : (
-                "Done"
-
-
-              )}
-            </Button> */}
+    
           </div>
         </form>
       </div>

@@ -3,7 +3,15 @@
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useState } from "react"
+import React, { useState } from "react"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group"
 
 export default function SearchInput() {
   const router = useRouter()
@@ -26,14 +34,22 @@ export default function SearchInput() {
   }
 
   return (
-    <form onSubmit={handleSearch} className="flex-2 flex items-center border px-3 rounded-sm ">
-        <Search className="w-3 h-3 m-3"/>
-      <Input
-        placeholder="Search products..."
+    <form onSubmit={handleSearch} className="flex-2  ">
+       <InputGroup>
+  <InputGroupInput 
+     placeholder="Search products..."
         value={value}
-        onChange={(e) => setValue(e.target.value)}
-        className="border-0  ring-0 outline-0 focus:ring-0"
-      />
+        onChange={(e:any) => setValue(e.target.value)}
+        
+   />
+  <InputGroupAddon>
+    <Search />
+  </InputGroupAddon>
+  <InputGroupAddon align="inline-end">
+    <InputGroupButton>Search</InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>
+    
     </form>
   )
 }

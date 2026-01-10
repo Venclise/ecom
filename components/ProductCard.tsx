@@ -25,7 +25,7 @@ export default function ProductCard({ item }: { item: Item }) {
         </div>
         <div className="w-full flex items-center flex-col gap-2  justify-center bg-white ">
         
-          <h1 className=" text-2xl font-semibold line-clamp-1">{item.title}</h1>
+          <h1 className=" text-xl font-semibold line-clamp-2">{item.title}</h1>
           <h2 className="font-bold">${item.price}</h2>
         </div>
       </div>

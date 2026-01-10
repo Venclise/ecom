@@ -6,14 +6,15 @@ import React from 'react'
 export default function Footer() {
     const Year = new Date().getFullYear()
   return (
-    <div className='w-full flex flex-col p-10 bg-gray-50 '>
+    <div className='w-full flex flex-col p-10 bg-gray-50 border-t '>
 
-<div className='flex items-center w-full justify-between'>
+<div className='flex  lg:flex-row flex-col gap-8 w-full justify-between'>
 
 <div className='flex flex-col gap-3 w-max'>
 
         <Link href="/">
-        <span className='font-bold text-4xl text-green-700'>
+           <span className=' text-2xl text-green-600 font-banger tracking-widest '>
+
 
    Chewzy
         </span>
@@ -23,14 +24,14 @@ export default function Footer() {
           Copyright  {Year} All Right's Reserved
         </p>
 </div>
-<div className='flex flex-col items-end justify-end w-max gap-2'>
+<div className='flex flex-col lg:items-end lg:justify-end w-max gap-2'>
   <div className='flex items-center gap-2'>
    <Phone className='w-4 h-4'/>
-  <a href="tel:+92300123123" className='underline'>+92300123123</a>
+  <a href="tel:+92300123123" className='underline text-sm'>+92300123123</a>
   </div>
-   <div className='flex items-center gap-2'>
+   <div className='flex items-center gap-4'>
    <MapPin className='w-4 h-4'/>
-      <span>
+      <span className='text-sm'>
           Shop no 1 New Street My city
       </span>
   </div>

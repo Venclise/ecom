@@ -19,7 +19,7 @@ function CatSwiper() {
   const [activeIndex, setActiveIndex] = useState(0);
  const router = useRouter()
   return (
-    <div className="w-full flex flex-col gap-4 overflow-hidden p-5 lg:px-20 mt-12 ">
+    <div className="w-full flex flex-col gap-8 overflow-hidden p-5 h-[80vh] lg:px-20  ">
       
       <span  className="text-black  text-4xl md:text-6xl font-semibold flex flex-col gap-2">
         <span className="text-2xl">Explore</span>
@@ -61,7 +61,7 @@ function CatSwiper() {
                 />
               </div>
 
-              <h2 className=" text-center text-sm capitalize text-black font-semibold">
+              <h2 className=" text-center text-sm capitalize text-black ">
                 {item.title}
               </h2>
 
