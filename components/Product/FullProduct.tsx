@@ -42,7 +42,7 @@ export default function FullProduct({ product }: { product: Product }) {
     <div className="flex-1 ">
 
      {product.image && (
-         <div className="w-[20rem] h-[20rem] lg:w-[25rem] lg:h-[25rem] relative bg-gray-100">
+         <div className="w-[20rem] h-[20rem] lg:w-[35rem] lg:h-[25rem] relative bg-gray-100">
             <Image
               src={product.image}
               alt={product.title}
@@ -52,7 +52,7 @@ export default function FullProduct({ product }: { product: Product }) {
           </div>
         )}
         </div>
-<div className="flex items-center gap-4 flex-col flex-1 mt-8">
+<div className="flex items-start justify-start gap-4 flex-col flex-1 mt-8">
     <div className='relative'>
 
 <Badge variant="default" className='capitalize bg-green-700'>{product.category}</Badge>
@@ -65,7 +65,7 @@ export default function FullProduct({ product }: { product: Product }) {
           ${product.price}
         </p>
 
-        <p className="text-gray-600 text-sm tracking-tight text-center">
+        <p className="text-gray-600 text-sm tracking-tight ">
           {product.description}
         </p>
 
@@ -76,17 +76,8 @@ export default function FullProduct({ product }: { product: Product }) {
   img={product.image}
 />  
 
-        <div className="flex  flex-col gap-6 mt-6 w-[70%] ">
+        <div className="flex  flex-col gap-6 mt-6 w-full ">
         
-     
-          <Button
-            variant="secondary" 
-            className="px-9 py-5  "
-                onClick={handleBuyNow}
-          >
-          Buy now
-          </Button>
-
           <Button
             variant="default" 
             className="px-9 py-5  text-white hover:bg-green-700 rounded-sm  bg-green-700"
@@ -99,6 +90,15 @@ export default function FullProduct({ product }: { product: Product }) {
           >
             Add to cart
           </Button>
+     
+          <Button
+            variant="outline" 
+            className="px-9 py-5  "
+                onClick={handleBuyNow}
+          >
+          Buy it now
+          </Button>
+
 </div>
 
         </div> 

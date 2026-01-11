@@ -1,55 +1,85 @@
 "use client"
+import { useEffect, useState } from "react"
+import { Input } from "../ui/input"
+import { Spinner } from "../ui/spinner"
+import { Button } from "../ui/button"
+import { Search, XIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
 
-import { Input } from "@/components/ui/input"
-import { Search } from "lucide-react"
-import { useRouter, useSearchParams } from "next/navigation"
-import React, { useState } from "react"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/components/ui/input-group"
+export default function LiveSearch() {
+  const [search, setSearch] = useState("")
+  const [results, setResults] = useState<any[]>([])
+  const [loading, setLoading] = useState(false)
+  const [open,setIsOpen] = useState(false)
 
-export default function SearchInput() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
+  useEffect(() => {
+    if (search.length < 2) {
+      setResults([])
+      return
+    }
 
-  const category = searchParams.get("category")
-  const initialSearch = searchParams.get("search") ?? ""
+    const timer = setTimeout(async () => {
+      setLoading(true)
+      const res = await fetch(`/api/products?search=${search}`)
+      const data = await res.json()
+      setResults(data)
+      const highlight = (text: string) =>
+  text.replace(
+    new RegExp(search, "gi"),
+    (match) => `<b>${match}</b>`
+  )
+      setLoading(false)
+    }, 400)
 
-  const [value, setValue] = useState(initialSearch)
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    const params = new URLSearchParams()
-
-    if (value) params.set("search", value)
-    if (category) params.set("category", category)
-
-    router.push(`/products?${params.toString()}`)
-  }
-
+    return () => clearTimeout(timer)
+  }, [search])
+const router = useRouter()
   return (
-    <form onSubmit={handleSearch} className="flex-2  ">
-       <InputGroup>
-  <InputGroupInput 
-     placeholder="Search products..."
-        value={value}
-        onChange={(e:any) => setValue(e.target.value)}
-        
-   />
-  <InputGroupAddon>
-    <Search />
-  </InputGroupAddon>
-  <InputGroupAddon align="inline-end">
-    <InputGroupButton>Search</InputGroupButton>
-  </InputGroupAddon>
-</InputGroup>
+    <div>
+          <Button variant="ghost" className='cursor-pointer' onClick={() => setIsOpen(true)}>
+
+        <Search />
+      </Button> 
+      {
+        open && (
+      <div className="absolute top-0 left-0 h-screen w-full bg-white z-100 py-20 p-10 lg:p-20 ">
+         <Button variant="ghost" className="absolute top-5 right-5" onClick={() => setIsOpen(false)}>
+           <XIcon />
+         </Button>
+    <div className="relative w-full flex flex-col gap-4">
+         <h2 className="text-2xl ">
+          Search for products
+         </h2>
+      <Input
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search here"
+        className="w-full border p-2"
+        />
+
+      {results.length > 0 && (
+        <div className=" bg-white mt-12  z-50">
+          <span className="text-sm ">
+          Related Searches
+          </span>
+          {results.map((item) => (
+            <div
+            key={item._id}
+            className="p-2 hover:bg-gray-50 rounded-md hover:text-blue-400 cursor-pointer"
+            onClick={() => {setIsOpen(false); router.push(`/products/${item._id}`)}}
+            >
+             
+              {item.title}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {loading && <p className="w-full flex items-center"><Spinner /></p>}
+    </div>
+      </div>
+    )}
+    </div>
     
-    </form>
   )
 }

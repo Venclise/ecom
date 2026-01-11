@@ -51,7 +51,7 @@ export default function Cart() {
             { 
               cart.length < 1 &&
             <div className="h-screen w-full flex items-center justify-center">
-              <p className="font-normal text-xs text-neutral-600 ">Cart is empty..</p>
+              <p className="font-normal text-sm text-neutral-600 ">Cart is empty..</p>
               </div>
             }
               

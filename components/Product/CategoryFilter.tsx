@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter, useSearchParams } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import {
   Select,
   SelectContent,
@@ -14,32 +14,27 @@ import { Filter } from "lucide-react"
 
 export default function CategoryFilter() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+   const searchParams = useSearchParams()
+   const path = usePathname()
 
-  const activeCategory = searchParams.get("category") ?? "all"
+   const activeCategory = searchParams.get("category") ?? "all"
 
-  const handleChange = (value: string) => {
-    if (value === "all") {
-      router.push("/products")
-    } else {
+   const handleChange = (value: string) => {
+     if (value === "all") {
+       router.push("/products")
+     } else {
       router.push(`/products?category=${value}`)
-    }
-  }
+     }
+   }
 
   return (
-    <Select value={activeCategory} onValueChange={handleChange}>
-      <SelectTrigger className="w-max px-1 lg:px-5 " >
-        <Filter className="w-3 h-3"/>
-        <SelectValue placeholder="ALL"  />
-      </SelectTrigger>
 
-      <SelectContent>
-        {categories.map((cat) => (
-          <SelectItem key={cat} value={cat}>
-            {cat.toUpperCase()}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <div className="mt-8 w-full h-max p-5 flex items-center justify-center gap-4 md:gap-6 border-t border-b">
+          {categories.map((cat) => (
+         <p key={cat} className={`${activeCategory === cat ? "text-blue-500" : "text-gray-600" } text-sm cursor-pointer hover:text-blue-500 transition-all`} onClick={() => handleChange(cat)}>
+             {cat.toUpperCase()}
+           </p>
+         ))}
+    </div>
   )
 }

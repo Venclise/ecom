@@ -19,7 +19,7 @@ if(search) {
   query.title = {$regex:search,$options: "i"}
 }
 
-  const products = await Product.find(query)
+  const products = await Product.find(query).limit(5).select("title image price")
 
   return Response.json(products)
 }

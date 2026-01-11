@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/sheet"
 import { links } from '@/constants'
 import { usePathname } from 'next/navigation'
+import { Search } from 'lucide-react'
+import { Button } from './ui/button'
+import LiveSearch from './Product/SearchInput'
 
 
 export default function Header() {
@@ -22,7 +25,7 @@ export default function Header() {
   
   return (
     
-    <div className="p-3 flex items-center fixed top-0 left-0 w-full justify-between  z-[99]   backdrop-blur-2xl " >
+    <div className="p-3 flex items-center fixed top-0 left-0 w-full justify-between  z-[10]   backdrop-blur-3xl  " >
       <div className='flex items-center justify-center gap-4  '>
      <Sheet >
   <SheetTrigger className='cursor-pointer w-[2.5rem] h-[2.5rem] flex flex-col items-center justify-center gap-1 hover:bg-gray-100 rounded-md transition-all py-2 px-1'>
@@ -48,7 +51,7 @@ export default function Header() {
       <div className='h-screen flex items-center  '>
 
       <SheetDescription className='flex flex-col items-start justify-start gap-4 p-5 w-full'>
-           {
+           { 
               links.map(({id,title,link}) => {
              
                 return (
@@ -74,8 +77,11 @@ export default function Header() {
         </span>
         </Link>
     </div>
-
+    <div className='flex items-center '>
+ 
+<LiveSearch />
 <Cart />
+    </div>
 
     </div>
   )

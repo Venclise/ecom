@@ -19,7 +19,7 @@ function CatSwiper() {
   const [activeIndex, setActiveIndex] = useState(0);
  const router = useRouter()
   return (
-    <div className="w-full flex flex-col gap-8 overflow-hidden p-5 h-[80vh] lg:px-20  ">
+    <div className="w-full flex flex-col gap-8 overflow-hidden p-5 h-max lg:h-[80vh] lg:px-20  ">
       
       <span  className="text-black  text-4xl md:text-6xl font-semibold flex flex-col gap-2">
         <span className="text-2xl">Explore</span>
@@ -33,7 +33,7 @@ function CatSwiper() {
           modules={[A11y]}
           spaceBetween={30}
           breakpoints={{
-            0: { slidesPerView: 3 },
+            0: { slidesPerView: 2 },
             640: { slidesPerView: 4 },
             1024: { slidesPerView: 6 },
           }}
@@ -44,15 +44,15 @@ function CatSwiper() {
           {AllCategories.map((item) => (
             <SwiperSlide
               key={item.id}
-              className={`flex flex-col justify-center items-center  h-[50vh] cursor-pointer  w-full rounded-sm mx-auto `}
+              className={`flex justify-center items-center h-[50vh] cursor-pointer  w-full rounded-sm `}
               onClick={() => router.push(item.link)}
           
               >
-<div className="flex items-center justify-center w-full h-full flex-col hover:bg-gray-50 p-3 rounded-md ">
+<div className="flex items-center justify-center w-full h-full gap-4 bg-gray-50 border hover:bg-gray-50  rounded-xl  hover:gap-6 transition-all">
 
 
           
-              <div className="w-25 h-25  relative overflow-hidden">
+              <div className="w-15 h-15 lg:h-20 lg:w-20  relative overflow-hidden">
                 <Image
                   src={item.img}
                   alt={item.title}
@@ -61,8 +61,9 @@ function CatSwiper() {
                 />
               </div>
 
-              <h2 className=" text-center text-sm capitalize text-black ">
+              <h2 className=" text-center  text-sm capitalize text-black flex items-center ">
                 {item.title}
+                 <ChevronRight className="w-5 h-5" strokeWidth={1}/>
               </h2>
 
             

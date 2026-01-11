@@ -32,17 +32,15 @@ const res = await fetch(
   const data = await res.json()
 
   return (
-    <div className="w-full h-max mt-24 flex items-center justify-center flex-col  md:p-5  ">
-      <div className="flex items-center gap-2 w-full p-5 lg:p-5 lg:w-[80%] mx-auto ">
-
-      <SearchInput />
+    <div className="w-full h-max mt-24 flex-col  p-5  ">
+    
       <CategoryFilter />
-      </div>
       
-    <div className=" px-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-2  gap-1.5 lg:gap-3 mt-12 ">
+      
+    <div className="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 mt-24 ">
       {data.map((item: any) => (
         <ProductCard key={item._id} item={item} />
-      ))}
+      ))} 
     </div>
       </div>
   )

@@ -44,7 +44,7 @@ const res = await fetch(
   
   const data = await res.json();
   
-  // SAFETY CHECK
+  
   if (!Array.isArray(data) && data.length === 0) {
     return (
       <div className="mt-20 text-center text-gray-500">
@@ -56,19 +56,21 @@ const res = await fetch(
     );
   }
   return (
-    <div className="w-full mt-24 flex flex-col items-center">
+    <div className="w-full mt-24 py-5 bg-amber-200" >
      
       <div className="flex gap-2 w-full p-5 lg:w-[80%] mx-auto">
         <SearchInput />
         <CategoryFilter />
-      </div>
+      </div> 
 
      
       
-        <div className="px-1 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-12">
+         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  xl:grid-cols-5 gap-2 mt-12"> 
+        <div className="bg-black w-full h-max">
           {data.map((item: any) => (
             <ProductCard key={item._id} item={item} />
           ))}
+          </div>
         </div>
       
     </div>
